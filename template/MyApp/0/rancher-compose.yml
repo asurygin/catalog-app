@@ -22,7 +22,6 @@
     - variable: mysql_password
       description: "The password that will be set for the MySQL  superuser account."
       label: "MySQL  Password"
-      required: false
       required: true
       type: password
     - variable: mysql_database
