@@ -1,0 +1,5 @@
+name: MyApp
+description: This is a Joomla CMS service with MySQL database
+version: 0.1
+category: CMS
+ 

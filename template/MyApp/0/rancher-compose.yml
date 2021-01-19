@@ -1,0 +1,99 @@
+.catalog:
+  name: "mysql"
+  version: "v0.0.1"
+  description: "A recommended stack for the MySQL RDBMS."
+  questions:
+    - variable: app_lb_port
+      description: "Public port Load Balancer for access app"
+      default: 80
+      type: int
+    - variable: mysql_lb_port
+      description: "Public port for access to MySQL through the load balancer"
+      label: "MySQL Public LB Port"
+      required: true
+      default: 3306
+      type: "int"
+    - variable: mysql_root_password
+      description: "The password that will be set for the MySQL root superuser account."
+      label: "MySQL Root Password"
+      required: true
+      type: password
+    - variable: mysql_password
+      description: "The password that will be set for the MySQL  superuser account."
+      label: "MySQL  Password"
+      required: false
+      required: true
+      type: password
+    - variable: mysql_database
+      description: "Optional, allows you to specify the name of a database to be created on image startup."
+      label: "MySQL Database"
+    - variable: mysql_user
+      description: "Creates an additional MySQL user. MySQL Password must also be set."
+      label: "MySQL User"
+      required: false
+      type: "string"
+    - variable: joomla_db_password
+      description: "Password user database MySQL"
+      type: password
+    - variable: joomla_db-user
+      description: "User database MySQL"
+      type: string
+    - variable: joomla_db_host
+      description: "Host database and load balancer databse container"
+      default: mysql_lb_port
+      type: string
+
+version: '2'
+services:
+  app-lb1:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - priority: 1
+        protocol: http
+        service: joomla
+        source_port: ${app_lb_port}
+        target_port: ${app_lb_port}
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
+  app-db-lb1:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - priority: 1
+        protocol: tcp
+        service: mysql
+        source_port: ${mysql_lb_port}
+        target_port: ${mysql_lb_port}
+    health_check:
+      healthy_threshold: 2
+      response_timeout: 2000
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
+  joomla:
+    scale: 1
+    start_on_create: true
+  mysql:
+    scale: 1
+    start_on_create: true
+    health_check:
+      healthy_threshold: 3
+      response_timeout: 2000
+      port: 3306
+      unhealthy_threshold: 3
+      interval: 2000
+      strategy: recreate
+      reinitializing_timeout: 60000
