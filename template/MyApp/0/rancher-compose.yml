@@ -37,8 +37,8 @@
       description: "Password user database MySQL"
       label: Joomla password db user MySQL
       type: password
-    - variable: joomla_db-user
-      description: "User database MySQL"
+    - variable: joomla_db_user
+      description: "Joomla user database MySQL"
       label: "User database MySQL"
       type: string
     - variable: joomla_db_host

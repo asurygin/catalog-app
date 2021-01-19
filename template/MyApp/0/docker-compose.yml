@@ -21,7 +21,7 @@ services:
     hostname: joomla
     environment:
       JOOMLA_DB_PASSWORD: ${joomla_db_password}
-      JOOMLA_DB_USER: ${joomla_db-user}
+      JOOMLA_DB_USER: ${joomla_db_user}
       JOOMLA_DB_HOST: ${joomla_db_host}
     stdin_open: true
     tty: true
