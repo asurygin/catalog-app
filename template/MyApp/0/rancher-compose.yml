@@ -44,7 +44,7 @@
     - variable: joomla_db_host
       description: "Host database and load balancer databse container"
       label: "Joomla db host"
-      default: mysql_lb_port
+      default: app-db-lb1
       type: "string"
 
 version: '2'
