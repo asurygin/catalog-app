@@ -40,7 +40,7 @@
       type: password
     - variable: joomla_db_user
       description: "Joomla user database MySQL"
-      label: "User database MySQL"
+      label: "Joomla user database MySQL"
       type: "string"
     - variable: joomla_db_host
       description: "Host database and load balancer databse container"
