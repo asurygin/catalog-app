@@ -28,6 +28,7 @@
     - variable: mysql_database
       description: "Optional, allows you to specify the name of a database to be created on image startup."
       label: "MySQL Database"
+      type: "string"
     - variable: mysql_user
       description: "Creates an additional MySQL user. MySQL Password must also be set."
       label: "MySQL User"
