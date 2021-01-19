@@ -5,7 +5,7 @@
   questions:
     - variable: app_lb_port
       description: "Public port Load Balancer for access app"
-      label: "Load Balancer app publick port"
+      label: "Load Balancer app public port"
       default: 80
       type: int
     - variable: mysql_lb_port
@@ -39,7 +39,7 @@
       type: password
     - variable: joomla_db-user
       description: "User database MySQL"
-      lable: "User database MySQL"
+      label: "User database MySQL"
       type: string
     - variable: joomla_db_host
       description: "Host database and load balancer databse container"
