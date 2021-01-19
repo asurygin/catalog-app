@@ -17,7 +17,7 @@
     - variable: mysql_root_password
       description: "The password that will be set for the MySQL root superuser account."
       label: "MySQL Root Password"
-      required: false
+      required: true
       type: password
     - variable: mysql_password
       description: "The password that will be set for the MySQL  superuser account."
@@ -45,6 +45,7 @@
     - variable: mysql_database
       description: "Optional, allows you to specify the name of a database to be created on image startup."
       label: "MySQL Database"
+      default: joomla
       type: "string"
     - variable: mysql_user
       description: "Creates an additional MySQL user. MySQL Password must also be set."
