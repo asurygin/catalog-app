@@ -3,7 +3,7 @@ services:
   app-lb1:
     image: rancher/lb-service-haproxy:v0.9.14
     ports:
-    - ${app_lb_port}:${app_lb_port}/tcp
+    - ${app_lb_port}:${app_lb_port}
     labels:
       io.rancher.container.agent.role: environmentAdmin,agent
       io.rancher.container.agent_service.drain_provider: 'true'
@@ -11,7 +11,7 @@ services:
   app-db-lb1:
     image: rancher/lb-service-haproxy:v0.9.14
     expose:
-    - ${mysql_lb_port}:${mysql_lb_port}/tcp
+    - ${mysql_lb_port}:${mysql_lb_port}
     labels:
       io.rancher.container.agent.role: environmentAdmin,agent
       io.rancher.container.agent_service.drain_provider: 'true'
